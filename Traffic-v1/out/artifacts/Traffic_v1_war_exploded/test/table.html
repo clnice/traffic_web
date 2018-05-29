@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .camera {display: inline-block;width: 420px;margin: 20px;border: 1px solid gray}
+        .camera li,td,th {text-align: center;height: 30px;line-height: 30px}
+        .camera .roadname li {width: 245px}
+        .camera .roadnumber li {width: 108px;border-right: 1px solid gray}
+        .camera .roadnumber li:last-child {border: none}
+        .camera .roadnumber,.roadname {height: 30px;border-bottom: 1px solid gray}
+        .camera .roadname :first-child {width: 90px;border-right: 1px solid gray}
+        .camera .roadnumber :first-child {width: 90px;border-right: 1px solid gray}
+
+        .camera #table {border-collapse: collapse;}
+        .camera #table th{width: 105px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+        .camera #table th:last-child{border: none}
+        .camera #table td{width: 102px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+        .camera #table td:last-child{border: none}
+        .camera #table tr{border-top: 1px solid gray}
+        .camera #table tr:first-child{border:none}
+    </style>
+</head>
+<body>
+<div class="camera">
+    <ul class="roadname">
+        <li class="tec fl">路口名称</li>
+        <li class="fl tec">北京西路与长岭南路交叉口</li>
+    </ul>
+    <ul class="roadnumber">
+        <li class="fl tec">路口编号</li>
+        <li class="fl tec">#gdgs</li>
+        <li class="fl tec">#gdgs</li>
+        <li class="fl tec">#gdgs</li>
+    </ul>
+    <table id="table">
+        <tr id="th">
+           <th>车流来向</th>
+           <th>左转（辆）</th>
+           <th>直行（辆）</th>
+            <th>右转（辆）</th>
+        </tr>
+        <tr>
+            <td>东向</td>
+            <td>234</td>
+            <td>56</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>西向</td>
+            <td>234</td>
+            <td>56</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>南向</td>
+            <td>234</td>
+            <td>56</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>北向</td>
+            <td>234</td>
+            <td>56</td>
+            <td>32</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

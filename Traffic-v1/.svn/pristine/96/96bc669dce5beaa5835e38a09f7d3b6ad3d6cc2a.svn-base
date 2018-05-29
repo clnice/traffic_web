@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/page.css">
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kD0CbBbdaKV3s1Zcuu9BKnvLwWpdC8L4"></script>
+	<title>贵阳交通</title>
+	<!-- bmap:https://github.com/ecomfe/echarts/tree/master/extension/bmap -->
+</head>
+<body>
+	<div id="allmap"></div>
+	<!-- 搜索相关的操作Start -->
+	<div class="map-container absolute">
+		<div class="map-operation relative">
+			<div class="search-box">
+				<input type="text" class="keyword" placeholder="搜地点、查公交、找路线">
+			</div>
+			<div class="search absolute cp tec">
+				<img src="images/search.png" alt="" class="cp">
+			</div>
+		</div>
+		<div class="map-info"></div>
+	</div>
+	<!-- 搜索相关的操作End -->
+</body>
+
+
+</html>
+<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/TrafficControl.js"></script>
+<script type="text/javascript" src="api/data.js"></script>
+<script type="text/javascript">
+	(function () {
+		var data_info =[];
+		/**
+		 * 创建地图
+		 * */
+		var map = new BMap.Map("allmap");
+		map.centerAndZoom(new BMap.Point(106.65171, 26.628252), 16);
+		map.setCurrentCity("贵阳市");          // 设置地图显示的城市 此项是必须设置的
+		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+		//地图风格
+        styleJson = [
+            {
+                "featureType": "water",
+                "elementType": "all",
+                "stylers": {
+                    "color": "#021019"
+                }
+            },
+            {
+                "featureType": "highway",
+                "elementType": "geometry.fill",
+                "stylers": {
+                    "color": "#000000"
+                }
+            },
+            {
+                "featureType": "highway",
+                "elementType": "geometry.stroke",
+                "stylers": {
+                    "color": "#147a92"
+                }
+            },
+            {
+                "featureType": "highway",
+                "elementType": "labels.text.fill",
+                "stylers": {
+                    "color": "#ff0000ff",
+                    "visibility": "on"
+                }
+            },
+            {
+                "featureType": "arterial",
+                "elementType": "geometry.fill",
+                "stylers": {
+                    "color": "#000000"
+                }
+            },
+            {
+                "featureType": "arterial",
+                "elementType": "geometry.stroke",
+                "stylers": {
+                    "color": "#0b3d51"
+                }
+            },
+            {
+                "featureType": "arterial",
+                "elementType": "labels.text.fill",
+                "stylers": {
+                    "color": "#ff0000ff",
+                    "visibility": "on"
+                }
+            },
+            {
+                "featureType": "local",
+                "elementType": "geometry",
+                "stylers": {
+                    "color": "#000000"
+                }
+            },
+            {
+                "featureType": "land",
+                "elementType": "all",
+                "stylers": {
+                    "color": "#08304b"
+                }
+            },
+            {
+                "featureType": "railway",
+                "elementType": "geometry.fill",
+                "stylers": {
+                    "color": "#000000"
+                }
+            },
+            {
+                "featureType": "railway",
+                "elementType": "geometry.stroke",
+                "stylers": {
+                    "color": "#08304b"
+                }
+            },
+            {
+                "featureType": "subway",
+                "elementType": "geometry",
+                "stylers": {
+                    "lightness": -70
+                }
+            },
+            {
+                "featureType": "building",
+                "elementType": "geometry.fill",
+                "stylers": {
+                    "color": "#000000"
+                }
+            },
+            /*{
+                "featureType": "all",
+                "elementType": "labels.text.fill",
+                "stylers": {
+                    "color": "#857f7f"
+                }
+            },*/
+            {
+                "featureType": "all",
+                "elementType": "labels.text.stroke",
+                "stylers": {
+                    "color": "#000000"
+                }
+            },
+            {
+                "featureType": "building",
+                "elementType": "geometry",
+                "stylers": {
+                    "color": "#022338"
+                }
+            },
+            {
+                "featureType": "green",
+                "elementType": "geometry",
+                "stylers": {
+                    "color": "#062032"
+                }
+            },
+            {
+                "featureType": "boundary",
+                "elementType": "all",
+                "stylers": {
+                    "color": "#1e1c1c"
+                }
+            },
+            {
+                "featureType": "manmade",
+                "elementType": "geometry",
+                "stylers": {
+                    "color": "#022338"
+                }
+            },
+            {
+                "featureType": "poi",
+                "elementType": "all",
+                "stylers": {
+                    "visibility": "off"
+                }
+            },
+            {
+                "featureType": "all",
+                "elementType": "labels.icon",
+                "stylers": {
+                    "visibility": "off"
+                }
+            }
+        ]
+		map.setMapStyle({
+            // styleJson:styleJson,
+			style:'midnight'
+		});
+        map.setMapStyle({
+            styleJson:styleJson
+        });
+
+		var ctrl = new BMapLib.TrafficControl();
+		map.addControl(ctrl);
+		ctrl.showTraffic({predictDate:{hour:15, weekday: 5}});
+
+		/**
+		 * 加载数据
+		 * */
+		$.ajax({
+	            type: "post",//使用get方法访问后台
+	            dataType: "json",//返回json格式的数据
+	            url: "./data/roadData.json",
+	            // url: "./data/coordinates.json",
+	            data: {name:"test"},//要发送的数据
+	            success: function (data) {
+	                data_info = data;
+	                initData(data_info);
+                    // console.log(e.point.lng + ", " + e.point.lat);
+	                /*$.each(data.infoList, function (index, result) {
+                        console.log(result);
+	                });*/
+	            },
+	            error: function (error) {
+	                console.log("error:" + error);
+	            }
+	        })
+		map.addEventListener("click", showInfo);
+		function showInfo(e) {
+			console.log(e.point.lng + ", " + e.point.lat);
+        }
+		/**
+		 * 监听缩放层级
+		 * */
+        map.addEventListener("zoomend", function(){
+            console.log("地图缩放至：" + this.getZoom() + "级");
+            if (this.getZoom() == 10) {
+
+			}
+        });
+		/**
+		* 在地图上标注信息
+		* */
+
+        var opts = {
+            width : 250,     // 信息窗口宽度
+            height: 80,     // 信息窗口高度
+            title : "路段信息" , // 信息窗口标题
+            enableMessage:true//设置允许信息窗发送短息
+        };
+        function initData(data) {
+            var myIcon = new BMap.Icon("images/roadmark.png", new BMap.Size(30,30));
+            for (var i = 0; i < data.length; i ++) {
+                var marker = new BMap.Marker(new BMap.Point(data[i]["lng"],data[i]["lat"]),{icon:myIcon});
+                var content = data[i]["roadname"];
+                map.addOverlay(marker);
+                var code = data[i]["roadId"];
+                addClickHandler(content,marker,code)
+            }
+        }
+        function addClickHandler(content,marker,code){
+            var time = 20180312;
+            marker.addEventListener("click",function(e){
+                /**
+                 * 点击标注点
+                 * */
+                $.ajax({
+                    type: "post",//使用get方法访问后台
+                    dataType: "json",//返回json格式的数据
+                    url: "/TrafficShowWeb/traffic/findRegexRow",
+                    data: {address:code,time:time},//要发送的数据
+                    success: function (data) {
+
+                        console.log("请求数据",code,time);
+                        console.log("返回数据",data);
+                        openInfo(content,e);
+                    },
+                    error: function (error) {
+                        console.log("error:" + error);
+                    }
+                })
+            });
+        }
+        function openInfo(content,e){
+            var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+            var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+            map.openInfoWindow(infoWindow,point); //开启信息窗口
+        }
+
+		/**
+		 * 点击了搜索
+		 * */
+		$(".search").click(function () {
+			// console.log("点击了搜索",window.BMapLib);
+			var keyword = $(".keyword").val();
+			if (keyword) {
+                var local = new BMap.LocalSearch(map, {
+                    renderOptions:{map: map}
+                });
+                local.search(keyword);
+				map.centerAndZoom(keyword,16);
+			}
+
+		});
+
+	})();
+</script>

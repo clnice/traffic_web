@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>贵阳交通系统</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/trafficMap.css">
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kD0CbBbdaKV3s1Zcuu9BKnvLwWpdC8L4"></script>
+</head>
+<body>
+<script>
+</script>
+<!--<div id="ts" style="position: absolute;background: white;height: 3000px;z-index: 100;top: 0;width: 1000px" ></div>-->
+<!--<div id="container" style="height: 100%"></div>-->
+
+<div id="container"></div>
+<div class="real-time" style="position: absolute;width: 300px;height: 30px;line-height: 30px;background: #3399FF;right: 30px;bottom: 20px;text-align: center">
+
+</div>
+<!--search condition-->
+<div id="search" style="">
+    <div class="search-wrap">
+        <ul class="search-item">
+            <li class="active fl tec">路口编号</li>
+            <li class="fl tec">交通流量</li>
+            <li class="fl tec">平均速度</li>
+            <!--<li class="fl tec">拥堵程度</li>-->
+        </ul>
+        <ul class="item-select">
+            <li class="select">
+                <div class="num-search fl">
+                    路口编号<input type="text" class="num-name" id="num-name" placeholder="请输入路段编号">
+                </div>
+                <div class="search-btn fl tec">
+                    <img src="images/search.png" alt="">
+                </div>
+            </li>
+            <li class="select">
+                <div class="num-car fl">
+                    车辆数 <input type="text" id="car_from">~
+                    <input type="text" id="car_to">
+                    <span class="fr">辆</span>
+                </div>
+                <div class="search-btn fl tec">
+                    <img src="images/search.png" alt="">
+                </div>
+            </li>
+            <li class="select">
+                <div class="num-speed fl">
+                    速度 <input type="text" id="speed_from">~<input type="text" id="speed_to"><span class="fr">公里/小时</span>
+                </div>
+                <div class="search-btn fl tec">
+                    <img src="images/search.png" alt="">
+                </div>
+            </li>
+            <!--<li class="select">
+                <div class="num-traffic fl">
+                     拥挤叉路数<select name="" id="num-traffic-value">
+                         <option value="">1</option>
+                         <option value="">2</option>
+                         <option value="">3</option>
+                         <option value="">4</option>
+                         <option value="">5</option>
+                     </select>
+                </div>
+                <div class="search-btn fl tec">
+                    <img src="images/search.png" alt="">
+                </div>
+            </li>-->
+        </ul>
+        <!--时间设置Start-->
+        <div class="time-wrap">
+            <div class="time-show">
+                <div class="current inblock fl">
+                    数据采集时间：<span id="current-time"></span>
+                </div>
+                <div class="time-icon inblock fl tec">
+                    <img src="images/time-icon.png" alt="">
+                </div>
+            </div>
+            <div class="time-set">
+                <!--<div class="time-mode">
+                    <input type="radio" id="follow" name="time-mode" checked><label for="follow">流动模式</label>
+                    <input type="radio" id="static" name="time-mode"><label for="static">静止模式</label>
+                </div>-->
+                <div class="time-select">
+                    选择时间<input type="text" id="time-select" class="time-minute Wdate" onclick="WdatePicker(
+                        {dateFmt:'yyyy-MM-dd HH:mm:00',minDate:'2018-01-01 00:00:00',maxDate:'2018-04-30 23:59:00'}
+                        )" onchange="timeOnChange()"/>
+                </div>
+            </div>
+        </div>
+        <!--时间设置End-->
+    </div>
+</div>
+<!--右边search result-->
+<div id="search-result">
+    <h4>》检索结果</h4>
+    <div id="scroll">
+        <div id="result">
+            <div id="hide">
+                <span class="hide-arrow">《</span>
+            </div>
+            <!--流量Start-->
+            <div class="result-car" style="">
+                <ul class="result-item">
+                    <!--<li class="car-item">
+                        <div class="car-num fl">1</div>
+                        <div class="car-main fl">
+                            <div class="car-road-name" class="fs14">北京西路与长岭南路交叉口（#GS002）</div>
+                            <div class="car-road-data">
+                                <span>交通流量</span>
+                                <span>354辆</span>
+                                <span>定位</span>
+                            </div>
+                        </div>
+                    </li>-->
+                </ul>
+            </div>
+            <!--流量End-->
+            <!--速度Start-->
+            <div class="result-speed" style="">
+                <ul class="result-item">
+                    <!--<li class="speed-item">
+                        <div class="speed-num fl">1</div>
+                        <div class="speed-main fl">
+                            <div class="speed-road-name" class="fs14">北京西路与长岭南路交叉口（#GS002）至 北京西路与黔灵山路交叉口</div>
+                            <div class="speed-road-data">
+                                <span class="aver-name">平均速度</span>
+                                <span class="average-speed">160.5千米/小时</span>
+                                <span class="average-btn">定位</span>
+                            </div>
+                        </div>
+                    </li>-->
+                </ul>
+            </div>
+            <!--速度End-->
+            <!--拥堵指数Start-->
+            <div class="result-traffic" style="display: none">
+                <ul class="result-item">
+                    <li class="traffic-item">
+                        <div class="traffic-num fl">1</div>
+                        <div class="traffic-main fl">
+                            <div class="traffic-road-name" class="fs14">北京西路与长岭南路交叉口（#GS002）</div>
+                            <div class="traffic-road-data">
+                                <span>拥堵叉路数</span>
+                                <span>6</span>
+                                <span>定位</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--拥堵指数End-->
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--测试路段点-->
+<button id="show-roadline" style="position: absolute;top: 0;left: 0;display: none">显示路段描点按钮</button>
+<div id="roadline" class="absolute show-point" style="height: 600px;width: 300px;background: gray;top: 20px;left: 10px;padding: 5px;display: none">
+    <div>
+        <span>请输入内容：</span>
+        <input id="linedata" name="" type="text" style="text-indent: 5px">
+        <div id="pale" style="overflow: scroll;height: 500px">
+
+        </div>
+        <span class="point-file absolute" style="bottom: 50px"></span>
+        <div>
+            <span id="addLineBtn" class="absolute corfff addBtn" style="right: 10px;bottom: 10px">添加</span>
+            <span class="absolute corfff clearBtn" style="left: 10px;bottom: 10px">清空</span>
+        </div>
+    </div>
+</div>
+<!--纠正路口面板-->
+<div class="absolute" style="height: 400px;width: 300px;background: gray;top: 20px;right: 10px;padding: 5px;display: none">
+    <div>
+        经度：<input type="text" id="lng">
+    </div>
+    <div>
+        纬度：<input type="text" id="lat">
+    </div>
+    <div>
+        距离：<input type="text" id="distance">
+    </div>
+    <button id="sureBtn">确认</button>
+</div>
+
+<!--新增点面板-->
+<button id="show-roadpoint" style="position: absolute;top: 0;right: 50px;display: none">显示新增路口按钮</button>
+<div id="roadpoint" class="absolute" style="height: 400px;width: 300px;background: gray;top: 20px;right: 10px;padding: 5px;display: none">
+    <div>
+        <div class="point-item">
+            经度：<input type="text" id="add_lng">
+        </div>
+        <div class="point-item">
+            纬度：<input type="text" id="add_lat">
+        </div>
+        <div class="point-item">
+            地点编码：<input type="text" id="address_code">
+        </div>
+        <div class="point-item">
+            地点名字：<input type="text" id="address_name">
+        </div>
+        <button id="addRoadBtn">添加</button>
+    </div>
+</div>
+
+<!--<div id="test3" style="position: absolute;top: 0;left: 0;height: 2000px;width: 1200px;background: red"></div>-->
+
+<script type="text/javascript" src="js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>-->
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<!--交通流量测试-->
+<script type="text/javascript" src="js/trafficMap.js"></script>
+<script type="text/javascript" src="js/lib/layer/layer.js"></script>
+<script type="text/javascript" src="js/lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="api/common.js"></script>
+<script type="text/javascript" src="api/echartAnimate.js"></script>
+
+</body>
+</html>

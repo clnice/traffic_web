@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        #roadinfo {display: inline-block;width: 420px;margin: 20px;border: 1px solid gray}
+        #roadinfo li,td,th {text-align: center;height: 30px;line-height: 30px}
+        #roadinfo .roadname li {width: 245px}
+        #roadinfo .roadnumber li {width: 108px;border-right: 1px solid gray}
+        #roadinfo .roadnumber li:last-child {border: none}
+        #roadinfo .roadnumber,.roadname {height: 30px;border-bottom: 1px solid gray}
+        #roadinfo .roadname :first-child {width: 90px;border-right: 1px solid gray}
+        #roadinfo .roadnumber :first-child {width: 90px;border-right: 1px solid gray}
+
+        #roadinfo #table {border-collapse: collapse;}
+        #roadinfo #table th{width: 108px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+        #roadinfo #table th:first-child{width: 90px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+        #roadinfo #table th:last-child{border: none}
+        #roadinfo #table td{border-right: 1px solid gray;height: 30px;line-height: 30px}
+        #roadinfo #table td:last-child{border: none}
+        #roadinfo #table tr{border-top: 1px solid gray}
+        #roadinfo #table tr:first-child{border:none}
+    </style>
+</head>
+<body>
+<div id="roadinfo">
+    <ul class="roadname">
+        <li class="tec fl">路口名称</li>
+        <li class="fl tec">北京西路与长岭南路交叉口</li>
+    </ul>
+    <ul class="roadnumber">
+        <li class="fl tec">路口编号</li>
+        <li class="fl tec">#gdgs</li>
+        <li class="fl tec">#gdgs</li>
+        <li class="fl tec">#gdgs</li>
+    </ul>
+    <table id="table">
+        <tr id="th">
+            <th>方向</th>
+            <th>平均速度（公里/小时）</th>
+            <th>平均旅行时间（分）</th>
+            <th>过车量（辆）</th>
+        </tr>
+        <tr>
+            <td>正向</td>
+            <td>30.43</td>
+            <td>2.56</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>逆向</td>
+            <td>30.43</td>
+            <td>2.56</td>
+            <td>32</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+<script>
+    if (true) {
+        var a  = 98;
+        var b = 100;
+        setTimeout("test("+a+","+b+")",1000);
+    }
+
+    function test(a,b) {
+        console.log("这是测试2",a,b);
+        if (true) {
+            var c = 100;
+            console.log("wai:",c);
+            if (true) {
+                var c = 200;
+                console.log("nei:",c);
+            }
+        }
+        console.log("xxx",c);
+    }
+</script>

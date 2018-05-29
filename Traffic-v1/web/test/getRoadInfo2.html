@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=kD0CbBbdaKV3s1Zcuu9BKnvLwWpdC8L4"></script>
+    <title>获取道路信息</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+<script src="../js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(106.680114, 26.440041);
+    map.centerAndZoom(point, 15);
+    var busLines = [
+        {"coords": [
+                [106.684135,26.436109],
+                [106.684199,26.435378],
+                [106.684127,26.435561],
+                [106.684181,26.43474],
+                [106.684163,26.433958],
+                [106.684117,26.43018]
+            ],
+            "lines":"#HX005-#HX002"},
+        {"coords":[
+                [106.686375,26.429126],[106.686385,26.431732],[106.686385,26.435768], [106.68634,26.436763]],
+            "lines":"#HX002-#HX005"},
+        {"coords":[
+                [106.685135,26.436109],
+                [106.685199,26.435378],
+                [106.685127,26.435561],
+                [106.685181,26.43474],
+                [106.685163,26.433958],
+                [106.685117,26.43018]
+            ],"lines":"#NM027-#NM003"}
+    ];
+    for (var i = 0; i < busLines.length; i ++) {
+        var list = new Array();//存放点（包含经纬度) 组成一条线
+        for(var j = 0; j < busLines[i].coords.length; j ++){
+            //描路段的点
+            list.push(new BMap.Point(busLines[i].coords[j][0],busLines[i].coords[j][1]));
+        }
+        var polyline = new BMap.Polyline(list,{//一条线
+            strokeColor: 'red', strokeWeight:10, strokeOpacity:0.5
+        });
+        map.addOverlay(polyline);
+        polyline.addEventListener('click',function () {
+            console.log("此处 点击事件会执行")
+        })
+    }
+</script>

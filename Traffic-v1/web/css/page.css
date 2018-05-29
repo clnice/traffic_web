@@ -1,0 +1,132 @@
+/*======================================首页Start*/
+/*body, html,*/
+/*#allmap {height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";cursor: pointer;right: 310px}*/
+body,html {height: 100%;overflow: hidden;margin: 0;font-family:"微软雅黑";cursor: pointer;}
+#container {height: 100%;cursor: pointer;}
+
+/*左边检索条件Start*/
+#search {width: 400px;position: absolute;top: 20px;left: 30px;background: white;border-radius: 5px 5px 0 0}
+#search .search-wrap .search-item {height: 40px; border-bottom: 1px solid gray}
+#search .search-wrap .search-item li{width: 132px;height: 40px;line-height: 40px;border-right: 1px solid gray;border-radius:5px 5px 0 0}
+#search .search-wrap .search-item li:last-child{width: 132px;height: 40px;line-height: 40px;border-radius:5px 5px 0 0;padding-left: 1px}
+#search .search-wrap .search-item .active{background: #3399FF;color: white}
+#search .search-wrap .item-select li{display: none;height: 40px;padding: 5px 0;}
+/*编号*/
+#search .search-wrap .item-select .num-search,.num-car, .num-speed,.num-traffic{width: 320px;height: 30px;padding: 5px 10px}
+#search .search-wrap .item-select .num-search input{width: 180px;height: 26px;outline: none;text-indent: 5px;margin-left: 5px}
+/*车辆数*/
+#search .search-wrap .item-select .num-car input{width: 110px;height: 26px;outline: none;text-indent: 5px}
+#search .search-wrap .item-select .num-speed input{width: 90px;height: 26px;outline: none;text-indent: 5px}
+#search .search-wrap .item-select .num-traffic select{width: 110px;height: 30px;outline: none;text-indent: 5px;margin-left: 5px}
+#search .search-wrap .item-select .num-traffic select option{height: 30px;}
+#search .search-wrap .item-select .select span {height: 30px;line-height: 30px;margin-right: 5px}
+
+#search .search-wrap .item-select .search-btn{width: 60px;height: 40px;background: #3399FF;}
+#search .search-wrap .item-select .search-btn  img{vertical-align: top;margin-top: 10px}
+
+#search .time-wrap .time-show {height: 40px}
+#search .time-wrap .current {height: 40px;line-height: 40px;width: 320px;background: gray;padding: 0 10px}
+#search .time-wrap .time-icon {height: 40px;line-height: 40px;width: 60px;background: #3399FF}
+#search .time-wrap .time-icon>img {vertical-align: top;margin-top: 10px}
+
+#search .time-wrap .time-mode {height: 40px;text-align: center;line-height: 40px}
+#search .time-wrap .time-select {height: 40px;padding: 10px 10px;display: none}
+#search .time-wrap .time-select .time-minute {height: 30px;outline: none;margin-left: 5px;width: 250px;text-indent: 5px}
+/*左边检索条件End*/
+
+/*右边检索面板Start*/
+#search-result {width: 351px;height: 100%;background: white;position: absolute;top: 0;right: -350px}
+#scroll {overflow-y: auto;height: 92%}
+#search-result h4{padding: 10px 10px;background: #3399FF;margin-bottom: 20px}
+#result {margin: 0 15px;width: 320px}
+#result #hide{width: 12px;background: #3399FF;position: absolute;top: 50%;height: 150px;left: -12px;margin-top: -75px}
+#result #hide .hide-arrow{width: 8px;height:12px;position: absolute;top: 50%;left: 0;margin-top: -6px;margin-left: -12px;left: 50%}
+/*===流量*/
+#result .car-item{border: 1px solid #C6C6C6;height: 51px;border-bottom: none}
+#result .result-item .car-item:last-child{border-bottom: 1px solid #C6C6C6}
+#result .car-num{width: 25px;height: 51px;line-height: 51px;text-align: center;border-right: 1px solid #C6C6C6}
+#result .car-main{height: 51px;width: 292px}
+#result .car-main .car-road-name{height: 25px;line-height: 25px;border-bottom: 1px solid #C6C6C6;text-align: center}
+#result .car-main .car-road-data{height: 25px;line-height: 25px}
+#result .car-main .car-road-data span{display: inline-block;width: 32%;text-align: center;border-right: 1px solid #C6C6C6}
+#result .car-main .car-road-data span:last-child{border-right: none;background: #3399FF;}
+/*====速度*/
+#result .speed-item{border: 1px solid #C6C6C6;height: 76px;border-bottom: none}
+#result .result-item .speed-item:last-child{border-bottom: 1px solid #C6C6C6}
+#result .speed-num{width: 25px;height: 76px;line-height: 76px;text-align: center;border-right: 1px solid #C6C6C6}
+#result .speed-main{height: 76px;width: 292px}
+#result .speed-main .speed-road-name{height: 50px;line-height: 25px;border-bottom: 1px solid #C6C6C6;text-align: center}
+#result .speed-main .speed-road-data{height: 25px;line-height: 25px}
+#result .speed-main .speed-road-data .aver-name{display: inline-block;width: 30%;text-align: center;border-right: 1px solid #C6C6C6}
+#result .speed-main .speed-road-data .average-speed{display: inline-block;width: 40%;text-align: center;border-right: 1px solid #C6C6C6}
+#result .speed-main .speed-road-data .average-btn{width: 26%;display: inline-block;text-align: center;background: #3399FF}
+/*===拥堵指数*/
+#result .traffic-item{border: 1px solid #C6C6C6;height: 51px;border-bottom: none}
+#result .result-item .traffic-item:last-child{border-bottom: 1px solid #C6C6C6}
+#result .traffic-num{width: 25px;height: 51px;line-height: 51px;text-align: center;border-right: 1px solid #C6C6C6}
+#result .traffic-main{height: 51px;width: 292px}
+#result .traffic-main .traffic-road-name{height: 25px;line-height: 25px;border-bottom: 1px solid #C6C6C6;text-align: center}
+#result .traffic-main .traffic-road-data{height: 25px;line-height: 25px}
+#result .traffic-main .traffic-road-data span{display: inline-block;width: 31%;text-align: center;border-right: 1px solid #C6C6C6}
+#result .traffic-main .traffic-road-data span:last-child{border-right: none}
+
+/*右边检索面板End*/
+
+/*点击摄像头弹出面板Start*/
+.camera {display: inline-block;width: 420px;margin: 20px;border: 1px solid gray}
+.camera li,td,th {text-align: center;height: 30px;line-height: 30px}
+.camera .roadname li {width: 245px}
+.camera .roadnumber li {width: 108px;border-right: 1px solid gray}
+.camera .roadnumber li:last-child {border: none}
+.camera .roadnumber,.roadname {height: 30px;border-bottom: 1px solid gray}
+.camera .roadname :first-child {width: 90px;border-right: 1px solid gray}
+.camera .roadnumber :first-child {width: 90px;border-right: 1px solid gray}
+
+.camera #table {border-collapse: collapse;}
+.camera #table th{width: 105px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+.camera #table th:last-child{border: none}
+.camera #table td{width: 102px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+.camera #table td:last-child{border: none}
+.camera #table tr{border-top: 1px solid gray}
+.camera #table tr:first-child{border:none}
+/*点击摄像头弹出面板End*/
+
+/*点击路面弹出面板Start*/
+#roadinfo {display: inline-block;width: 420px;margin: 20px;border: 1px solid gray}
+#roadinfo li,td,th {text-align: center;height: 30px;line-height: 30px}
+#roadinfo .roadname li {width: 245px}
+#roadinfo .roadnumber li {width: 108px;border-right: 1px solid gray}
+#roadinfo .roadnumber li:last-child {border: none;width: 245px}
+#roadinfo .roadname {height: 60px;border-bottom: 1px solid gray}
+#roadinfo .roadnumber {height: 30px;border-bottom: 1px solid gray}
+#roadinfo .roadname :first-child {width: 90px;height: 60px;border-right: 1px solid gray}
+#roadinfo .roadname :last-child {width: 300px}
+#roadinfo .roadnumber :first-child {width: 90px;border-right: 1px solid gray}
+
+#roadinfo #table {border-collapse: collapse;}
+#roadinfo #table th{width: 108px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+#roadinfo #table th:first-child{width: 90px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+#roadinfo #table th:last-child{border: none}
+#roadinfo #table td{border-right: 1px solid gray;height: 30px;line-height: 30px}
+#roadinfo #table td:last-child{border: none}
+#roadinfo #table tr{border-top: 1px solid gray}
+#roadinfo #table tr:first-child{border:none}
+/*点击路面弹出面板End*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

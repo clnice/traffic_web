@@ -1,0 +1,18 @@
+
+function ajaxRequest(url,param,type) {
+	return $.ajax({
+        type: type,//使用get方法访问后台
+        dataType: "json",//返回json格式的数据
+        url: "/GPS/test",//要访问的后台地址
+        data: param,//要发送的数据
+        success: function (data) {
+            console.log(data);
+            /*$.each(data.result.list, function (index, result, array) {
+
+            });*/
+        },
+        error: function (error) {
+            console.log("error:" + error);
+        }
+	})
+}

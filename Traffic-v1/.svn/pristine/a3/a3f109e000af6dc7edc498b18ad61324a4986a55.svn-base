@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>require.js</title>
+</head>
+<body>
+	<div>这是一个require测试</div>
+</body>
+</html>
+<script type="text/javascript" src="../lib/require.js"></script>
+<script type="text/javascript" src="main.js"></script>

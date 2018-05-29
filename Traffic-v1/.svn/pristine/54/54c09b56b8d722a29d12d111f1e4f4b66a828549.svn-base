@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        body, html, #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+    </style>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=kD0CbBbdaKV3s1Zcuu9BKnvLwWpdC8L4"></script>
+    <title>google转百度</title>
+</head>
+<body>
+<div id="allmap" class="main">
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+var a = c = a ||{version:3.0};
+(function () {
+    var d = document.getElementById("allmap");
+    console.log('[object String]' == Object.prototype.toString.call(""));
+    console.log('[object String]' == Object.prototype.toString.call(5));
+    console.log('[object String]' == Object.prototype.toString.call("xxx"));
+
+
+})();
+</script>

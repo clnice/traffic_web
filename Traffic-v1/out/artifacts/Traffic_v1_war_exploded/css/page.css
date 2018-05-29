@@ -1,0 +1,79 @@
+/*======================================首页Start*/
+/*body, html,*/
+/*#allmap {height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";cursor: pointer;right: 310px}*/
+body,html {height: 100%;overflow: hidden;margin: 0;font-family:"微软雅黑";cursor: pointer;}
+#container {height: 100%;cursor: pointer;right: 310px;}
+/*左边检索*/
+.map-container {top: 50px;left: 30px;width: 425px}
+.map-container .search-box {width: 348px;height: 38px;left: 0;}
+.map-container .search-box input{width: 348px;height: 20px;padding: 9px 10px;border: none;outline: none;}
+.map-container .search-record {border: 1px solid gray;width: 366px;background: white;padding-bottom: 10px;}
+.map-container .search-record li{height: 20px;padding: 5px 10px}
+.map-container .search-record li .record-name{width: 80%}
+.map-container .search-record li .record-delete{width: 20%;color: #EE6A50}
+.map-container .search {width: 57px;height: 38px;background-color: #3385ff;right: 0;top: 0;}
+.map-container .search img {margin-top: 10px}
+/**/
+.right-box {width: 300px;height: 100%;padding: 0 5px;position: absolute;right: 0;top: 0;background: #6688ca}
+.right-box .time-wrap p{height: 20px;padding: 5px;background: #AFAFAF}
+.right-box .set-date .date-start,.date-end{height: 50px;line-height: 50px}
+.right-box .set-date input{width: 180px;height: 20px;outline: none;text-align: left;text-indent: 5px;}
+
+.right-box .traffic-wrap >p{height: 20px;padding: 5px;background: #AFAFAF}
+.right-box .traffic-item {height: 30px;line-height: 30px;margin: 10px 0;}
+.right-box .traffic-item li{width: 25%;text-align: center;height: 20px;line-height: 20px;padding: 5px 0;float: left;font-size: 15px;}
+.right-box .traffic-item .active{background: red;color: white}
+.right-box .item-select li{height: 80px;padding: 10px}
+.right-box .item-select li>{height: 40px;line-height: 40px}
+.right-box .item-select .select{display: none}
+
+.right-box .item-select .num-name,.car-count,.average-speed,.congestion,.car-time {height: 40px;line-height: 40px}
+.right-box .item-select .num-name input{height: 30px;width: 150px;text-indent: 5px}
+.right-box .item-select .car-count input{width: 40px;height: 30px;text-indent: 5px}
+.right-box .item-select .average-speed input {width: 45px;height: 30px;text-indent: 5px}
+.right-box .item-select .congestion label {margin-right: 5px}
+.right-box .item-select .searchbtn {width: 40px;height: 35px;margin-top: 5px;vertical-align: top;text-align: center}
+
+/*结果*/
+.right-box .result-wrap>p{height: 20px;padding: 5px;background: #AFAFAF}
+.right-box .result-wrap li{height: 20px;padding: 5px 0; background: #EE6A50}
+
+.Dragval {position: absolute;bottom: 100px;height: 100px;background: red;width: 500px;left: 50%;margin-left: -390px;}
+/*=======================================首页End*/
+
+/*点击摄像头弹出面板Start*/
+.camera {display: inline-block;width: 420px;margin: 20px;border: 1px solid gray}
+.camera li,td,th {text-align: center;height: 30px;line-height: 30px}
+.camera .roadname li {width: 245px}
+.camera .roadnumber li {width: 108px;border-right: 1px solid gray}
+.camera .roadnumber li:last-child {border: none}
+.camera .roadnumber,.roadname {height: 30px;border-bottom: 1px solid gray}
+.camera .roadname :first-child {width: 90px;border-right: 1px solid gray}
+.camera .roadnumber :first-child {width: 90px;border-right: 1px solid gray}
+
+.camera #table {border-collapse: collapse;}
+.camera #table th{width: 105px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+.camera #table th:last-child{border: none}
+.camera #table td{width: 102px;border-right: 1px solid gray;height: 30px;line-height: 30px}
+.camera #table td:last-child{border: none}
+.camera #table tr{border-top: 1px solid gray}
+.camera #table tr:first-child{border:none}
+/*点击摄像头弹出面板End*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="poi-excelant-3.8-20120326">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/lib/poi-excelant-3.8-20120326.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/lib/poi-ooxml-3.8-20120326.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/lib/fastjson-1.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/lib/poi-3.8-20120326.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/lib/poi-ooxml-schemas-3.8-20120326.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/lib/poi-scratchpad-3.8-20120326.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/lib/poi-examples-3.8-20120326.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

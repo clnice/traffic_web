@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>经纬度封装测试</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var lines = [11,12,24,44,65,23];
+
+    //busLine就是遍历数组中的当前每一个元素
+    var busLines = [].concat.apply([], lines.map(function (busLine, idx) {
+        console.log(busLine);
+        var arr = [];
+        arr.push(busLine-10);
+        // console.log("arr",arr);
+        return arr;
+    }));
+    console.log("busLines",busLines);
+</script>
